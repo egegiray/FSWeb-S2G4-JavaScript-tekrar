@@ -39,6 +39,7 @@ const sayilar = [
 function KareninAlani(kenaruzunlugu) {
   return kenaruzunlugu * kenaruzunlugu;
 }
+console.log("Ornek:", KareninAlani(10))
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -50,9 +51,10 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(yaricap) {
+  return pi * 2 * yaricap
 }
+console.log("Gorev1:", CemberinCevresi(5))
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -64,16 +66,17 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yaricap, pi) {
+  return pi * Math.pow(yaricap, 2)
 }
+console.log("Gorev2: ", CemberinAlani(15, pi))
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
 		3a. enbuyuk ve enkucuk isminde 2 adet değişken tanımlayın ve sayilar dizisindeki en küçük sayı ile en büyük sayıyı bu değişkenlere atayın. (for döngüsü kullanın)
-		
+	
 		3b. `ucetambolunenler` adında bir dizi tanımlayın ve bu diziye sayilar dizisindeki 3'ün tam katı olan sayıları atayın (.forEach metodunu kullanın)
 		
 		3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
@@ -89,33 +92,63 @@ function CemberinAlani(/* kodlar buraya */) {
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
+let 
   tekraredensayilar;
 
 // 3a çözümü
+let enkucuk = 0;
+let enbuyuk = 0;
+for(let i=0; i<sayilar.length; i++){
+  if(sayilar[i] < enkucuk){
+      enkucuk = sayilar[i];   
+  }
+}
 
-/* kodlar buraya */
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] > enbuyuk) {
+      enbuyuk = sayilar[i];
+  }
+};
 
 // 3b çözümü:
+let ucetambolunenler = []
+sayilar.forEach(ucunTamKatlari)
+function ucunTamKatlari() {
+  for (let i = 0; i < sayilar.length; i++) {
+  let kalan = sayilar[i] % 3
+  if (kalan === 0) {
+    ucetambolunenler.push(sayilar[i])
+  }
+}
+}
+console.log("Gorev3: " + ucetambolunenler)
 
-/* kodlar buraya */
+/*
+let ucetambolunenler = [];
+function ucunKatlariniBul = (); {
+  for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] % 3 === 0) {
+    sayilar[i].forEach(ucunKatlariniBul(ucetambolunenler))
+  }
+  }
+}
+*/
 
 // 3c çözümü:
-
-/* kodlar buraya */
-
+const ucebolunenlerintoplami = ucetambolunenler.reduce((a, b) => {
+  return a + b}, );
+ 
 // 3d çözümü
+let besyuzdenkucuksayilar = sayilar.filter(kontrolbesyuz);
+function kontrolbesyuz(sayilar){
+return sayilar  < 500;
+}
 
-/* kodlar buraya */
 
 // 3e çözümü
-
-/* kodlar buraya */
+const siralisayilar = besyuzdenkucuksayilar.sort(function(a, b) {
+  return a - b;
+});
 
 // 3f çözümü
 
